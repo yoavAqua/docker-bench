@@ -240,10 +240,10 @@ groups:
     audit: "docker network ls --quiet | xargs docker network inspect --format '{{ .Name }}: {{ .Options }}'"
     tests:
       test_items:
-      - flag: "com.docker.network.bridge.enable_icc:false"
+      - flag: "com.docker.network.bridge.enable_icc"
         compare:
-          op: has
-          value: "com.docker.network.bridge.enable_icc:false"
+          op: eq
+          value: "false"
         set: true
     remediation: |
       Run the docker in daemon mode and pass --icc=false as an argument.
